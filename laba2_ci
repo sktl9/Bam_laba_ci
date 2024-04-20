@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h> 
+
+#define REAL double
+#define type(x) t(x)
+#define t(z) #z
+#define Kmax 10000
+
+#define M_PI 3.14159265358979323846
+
+int main() 
+{
+    REAL xmin = M_PI / 4;
+    REAL xmax = M_PI / 2;
+    int N = 10;
+    REAL dx = (xmax - xmin) / (N - 1);
+    for (REAL x = xmin ; x < xmax + dx; x += dx) {
+        REAL e, e1, S;
+        int k = 0;
+        e = x ;
+        do {
+            k++;
+            e /= 2.0;
+            e1 = x = e;
+        } while (e1 > x && k < Kmax);
+        k = 0;
+        REAL a = x;
+        REAL S = 0;
+        REAL h = 0;
+        while (fabs(a) > e) {
+            k += 1;
+            h = -x * x / (2 * k * (2 * k + 1));
+            a *= h;
+            S += a;
+        }
+        S /= x;
+        REAL f2 = sin(x * x);
+        printf("%.24f %.24f %.24f %e %d\n", x , S, f2, e ,N);
+    }   
+    return 0;
+}
