@@ -15,7 +15,7 @@ int main()
     int N = 10;
     REAL dx = (xmax - xmin) / (N - 1);
     for (REAL x = xmin ; x < xmax + dx; x += dx) {
-        REAL e, e1, S;
+        REAL e, e1, S; // Объявляем S только один раз
         int k = 0;
         e = x ;
         do {
@@ -25,7 +25,7 @@ int main()
         } while (e1 > x && k < Kmax);
         k = 0;
         REAL a = x;
-        REAL S = 0;
+        S = 0; // Инициализируем S
         REAL h = 0;
         while (fabs(a) > e) {
             k += 1;
