@@ -6,12 +6,10 @@
 #define t(z) #z
 #define Kmax 10000
 
-#define M_PI 3.14159265358979323846
-
 int main() 
 {
-    REAL xmin = M_PI / 4;
-    REAL xmax = M_PI / 2;
+    REAL xmin = 0.5;
+    REAL xmax = 1;
     int N = 10;
     REAL dx = (xmax - xmin) / (N - 1);
     for (REAL x = xmin ; x < xmax + dx; x += dx) {
@@ -34,7 +32,7 @@ int main()
             S += a;
         }
         S /= x;
-        REAL f2 = sin(x * x);
+        REAL f2 = 1+exp(x);
         printf("%.24f %.24f %.24f %e %d\n", x , S, f2, e ,N);
     }   
     return 0;
