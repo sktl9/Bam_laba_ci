@@ -1,0 +1,24 @@
+import numpy as m
+import matplotlib.pyplot as plt
+
+# Определим функцию y(x)
+def func(x):
+    if x > 2.5:
+        y = x * (x-2.5)**1/3
+    elif x == 2.5:
+        y = x * m.sin(2.5*x)
+    elif x < 2.5:
+        y = (m.e)**(-2.5*x)*m.cos(2.5*x)
+    return y
+
+# Зададим интервал и шаг
+x_values = m.arange(2,3, 0.1)
+y_values = [func(x) for x in x_values]
+
+# Построим график
+plt.plot(x_values, y_values)
+plt.title('График функции y(x)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid(True)
+plt.show()
